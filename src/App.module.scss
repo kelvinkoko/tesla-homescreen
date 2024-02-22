@@ -5,5 +5,11 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: $primary-bg;
+
+  background: linear-gradient(
+    113.16deg,
+    #0e0e0e 3.79%,
+    rgba(14, 14, 14, 0.97) 68.34%,
+    #0e0e0e 94.81%
+  );
 }
