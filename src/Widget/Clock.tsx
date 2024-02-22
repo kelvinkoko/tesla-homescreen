@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import CircleBase from "../Ui/CircleBase";
+import LargeCircle from "../Ui/LargeCircle";
 import styles from "./Clock.module.scss";
 
 const Clock = () => {
@@ -26,9 +26,9 @@ const Clock = () => {
   }, []);
 
   return (
-    <CircleBase>
+    <LargeCircle>
       <div className={styles.time}>{time}</div>
-    </CircleBase>
+    </LargeCircle>
   );
 };
 

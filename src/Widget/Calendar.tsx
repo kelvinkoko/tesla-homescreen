@@ -1,5 +1,5 @@
 import * as React from "react";
-import CircleBase from "../Ui/CircleBase";
+import SmallCircle from "../Ui/SmallCircle";
 import styles from "./Calendar.module.scss";
 
 const Calendar = () => {
@@ -9,13 +9,13 @@ const Calendar = () => {
   const weekday = currentDate.toLocaleString("default", { weekday: "short" });
 
   return (
-    <CircleBase>
+    <SmallCircle>
       <div className={styles.container}>
         <div className={styles.month}>{month}</div>
         <div className={styles.date}>{date}</div>
         <div className={styles.weekday}>{weekday}</div>
       </div>
-    </CircleBase>
+    </SmallCircle>
   );
 };
 
