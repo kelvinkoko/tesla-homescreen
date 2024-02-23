@@ -6,11 +6,12 @@
   height: 270px;
 
   border-radius: 135px;
-  background: linear-gradient(135deg, #151515 0%, #141414 100%);
-  box-shadow: -21px 21px 42px rgba(8, 8, 8, 0.2),
-    21px -21px 42px rgba(8, 8, 8, 0.2), -21px -21px 42px rgba(30, 30, 30, 0.9),
-    21px 21px 53px rgba(8, 8, 8, 0.9), inset 1px 1px 2px rgba(30, 30, 30, 0.3),
-    inset -1px -1px 2px rgba(8, 8, 8, 0.5);
+  background: linear-gradient(135deg, #282828 0%, #2c2c2c 100%);
+  box-shadow: -19px 19px 38px rgba(17, 17, 17, 0.2),
+    19px -19px 38px rgba(17, 17, 17, 0.2),
+    -19px -19px 38px rgba(67, 67, 67, 0.9), 19px 19px 48px rgba(17, 17, 17, 0.9),
+    inset 1px 1px 2px rgba(67, 67, 67, 0.3),
+    inset -1px -1px 2px rgba(17, 17, 17, 0.5);
 }
 
 .face {
@@ -21,11 +22,11 @@
   left: 20px;
   top: 20px;
 
-  background: #191919;
-  box-shadow: 1px 1px 2px rgba(37, 37, 37, 0.3),
-    -1px -1px 2px rgba(13, 13, 13, 0.5),
-    inset -4px 4px 8px rgba(13, 13, 13, 0.2),
-    inset 4px -4px 8px rgba(13, 13, 13, 0.2),
-    inset -4px -4px 8px rgba(37, 37, 37, 0.9),
-    inset 4px 4px 10px rgba(13, 13, 13, 0.9);
+  background: #1f1f1f;
+  box-shadow: 1px 1px 2px rgba(50, 50, 50, 0.3),
+    -1px -1px 2px rgba(12, 12, 12, 0.5),
+    inset -3px 3px 6px rgba(12, 12, 12, 0.2),
+    inset 3px -3px 6px rgba(12, 12, 12, 0.2),
+    inset -3px -3px 6px rgba(50, 50, 50, 0.9),
+    inset 3px 3px 8px rgba(12, 12, 12, 0.9);
 }
