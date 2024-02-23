@@ -5,37 +5,41 @@ import styles from "./Timer.module.scss";
 
 const Timer = () => {
   const [milliseconds, setMilliseconds] = useState<number>(0);
+  const [pausedMs, setPausedMs] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
   const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout | null>(
     null
   );
 
-  const startTimer = () => {
+  const startTimer = (startFrom: number) => {
     setTimerOn(true);
+    const startTime = Date.now() - startFrom;
     setTimerInterval(
       setInterval(() => {
-        setMilliseconds(prevMilliseconds => prevMilliseconds + 10);
+        setMilliseconds(Date.now() - startTime);
       }, 10)
     );
   };
 
   const pauseTimer = () => {
     setTimerOn(false);
+    setPausedMs(milliseconds);
     if (timerInterval) {
       clearInterval(timerInterval);
     }
   };
 
   const resetTimer = () => {
-    setMilliseconds(0);
     pauseTimer();
+    setMilliseconds(0);
+    setPausedMs(0);
   };
 
   const handleTimerClick = () => {
     if (timerOn) {
       pauseTimer();
     } else {
-      startTimer();
+      startTimer(pausedMs);
     }
   };
 
