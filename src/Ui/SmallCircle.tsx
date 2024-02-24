@@ -7,7 +7,7 @@ interface Props {
 
 const SmallCircle = ({ children }: Props) => {
   return (
-    <CircleBase outerSize={210} faceSize={180}>
+    <CircleBase outerSize={210} faceSize={170}>
       {children}
     </CircleBase>
   );
