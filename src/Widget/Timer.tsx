@@ -70,7 +70,7 @@ const Timer = () => {
   return (
     <SmallCircle>
       <div
-        className={styles.time}
+        className={`${styles.time} ${milliseconds > 0 ? styles.active : null}`}
         onClick={handleTimerClick}
         onDoubleClick={handleDoubleClick}
       >

@@ -1,3 +1,5 @@
+@import "../colors";
+
 .time {
   display: flex;
   height: 100%;
@@ -6,5 +8,5 @@
   font-style: normal;
   font-weight: 700;
   font-size: 44px;
-  color: rgba(255, 255, 255, 0.8);
+  color: $active-text;
 }
