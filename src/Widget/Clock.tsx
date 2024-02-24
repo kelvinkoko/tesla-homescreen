@@ -19,6 +19,8 @@ const Clock = () => {
       setTime(`${hours}${separator}${minutes}`);
     };
 
+    // Display the time immediately
+    updateTime();
     const intervalId = setInterval(updateTime, 1000);
 
     // Cleanup function to clear the interval
