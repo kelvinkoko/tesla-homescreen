@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import * as React from "react";
 import { useState } from "react";
 import SmallCircle from "../Ui/SmallCircle";
@@ -69,6 +70,19 @@ const Timer = () => {
 
   return (
     <SmallCircle>
+      {_.range(0, 60).map(i => {
+        const isLongMark = i % 5 == 0;
+        return (
+          <div
+            className={isLongMark ? styles.mark5 : styles.mark}
+            style={{
+              transform: `rotate(${i * 6}deg) translateY(${
+                isLongMark ? 71 : 75
+              }px)`
+            }}
+          />
+        );
+      })}
       <div
         className={`${styles.time} ${milliseconds > 0 ? styles.active : null}`}
         onClick={handleTimerClick}

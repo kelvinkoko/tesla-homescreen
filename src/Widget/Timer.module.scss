@@ -18,3 +18,23 @@
 .active {
   color: $active-text;
 }
+
+.mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 6px;
+  background-color: #8080807d;
+  transform-origin: top;
+}
+
+.mark5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 10px;
+  background-color: #aeaeae7d;
+  transform-origin: top;
+}
