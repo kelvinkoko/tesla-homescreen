@@ -67,7 +67,8 @@ const Timer = () => {
       .toString()
       .padStart(2, "0")}`;
   };
-
+  const isActive = milliseconds > 0;
+  const handAngleDeg = (((milliseconds / 1000 / 60) * 360) % 360) - 180;
   return (
     <SmallCircle>
       {_.range(0, 60).map(i => {
@@ -84,12 +85,21 @@ const Timer = () => {
         );
       })}
       <div
-        className={`${styles.time} ${milliseconds > 0 ? styles.active : null}`}
+        className={`${styles.time} ${isActive ? styles.active : null}`}
         onClick={handleTimerClick}
         onDoubleClick={handleDoubleClick}
       >
         {formatTime(milliseconds)}
       </div>
+      <div
+        className={styles.hand}
+        style={{
+          background: isActive
+            ? `rgba(198, 68, 68, 0.9)`
+            : `rgba(163, 102, 102, 0.7)`,
+          transform: `rotate(${handAngleDeg}deg)`
+        }}
+      />
     </SmallCircle>
   );
 };

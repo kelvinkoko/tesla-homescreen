@@ -38,3 +38,15 @@
   background-color: #aeaeae7d;
   transform-origin: top;
 }
+
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 70px;
+
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  transform-origin: top;
+}
