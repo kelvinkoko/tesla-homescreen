@@ -78,7 +78,7 @@ const Timer = () => {
             className={isLongMark ? styles.mark5 : styles.mark}
             style={{
               transform: `rotate(${i * 6}deg) translateY(${
-                isLongMark ? 71 : 75
+                isLongMark ? 79 : 82
               }px)`
             }}
           />
