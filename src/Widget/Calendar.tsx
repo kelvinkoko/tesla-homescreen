@@ -1,12 +1,40 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import SmallCircle from "../Ui/SmallCircle";
 import styles from "./Calendar.module.scss";
 
 const Calendar = () => {
-  const currentDate = new Date();
-  const month = currentDate.toLocaleString("default", { month: "long" });
-  const date = currentDate.getDate();
-  const weekday = currentDate.toLocaleString("default", { weekday: "short" });
+  const [month, setMonth] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [weekday, setWeekday] = useState<string>("");
+
+  useEffect(() => {
+    const updateDate = () => {
+      const currentDate = new Date();
+      setMonth(currentDate.toLocaleString("default", { month: "long" }));
+      setDate(currentDate.getDate().toString());
+      setWeekday(
+        currentDate.toLocaleString("default", {
+          weekday: "short"
+        })
+      );
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        updateDate();
+      }
+    };
+    // Display the date immediately
+    updateDate();
+    //
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    // Keep update the date in low interval so when pass through the day, it
+    const intervalId = setInterval(updateDate, 60 * 1000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <SmallCircle>
