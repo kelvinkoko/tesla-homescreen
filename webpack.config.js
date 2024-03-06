@@ -44,6 +44,10 @@ const config = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
+        test: /\.jpg$/,
+        type: "asset/resource"
+      },
+      {
         test: /\.svg$/,
         use: "file-loader"
       },
