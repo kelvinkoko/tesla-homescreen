@@ -1,6 +1,7 @@
+import * as _ from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import LargeCircle from "../Ui/LargeCircle";
+import Dome from "../Ui/Dome";
 import styles from "./Clock.module.scss";
 
 const Clock = () => {
@@ -26,11 +27,30 @@ const Clock = () => {
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
   }, []);
-
+  const radius = 100;
   return (
-    <LargeCircle>
-      <div className={styles.time}>{time}</div>
-    </LargeCircle>
+    <Dome>
+      <div className={styles.container}>
+        <div className={styles.time}>{time}</div>
+        <div className={styles.clockFace}>
+          {_.range(1, 13).map(i => {
+            const radian = ((i * 30 + 180) * Math.PI) / 180;
+            const x = -(radius * Math.sin(radian)) + radius;
+            const y = radius * Math.cos(radian) + radius;
+            return (
+              <div
+                className={styles.hourMark}
+                style={{
+                  transform: `translateX(${x}px) translateY(${y}px)`
+                }}
+              >
+                {i}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </Dome>
   );
 };
 

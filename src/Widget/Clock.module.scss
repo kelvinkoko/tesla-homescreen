@@ -1,5 +1,11 @@
 @import "../colors";
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .time {
   display: flex;
   height: 100%;
@@ -8,5 +14,21 @@
   font-style: normal;
   font-weight: 700;
   font-size: 44px;
-  color: $active-text;
+  color: #e1f5fc;
+  text-shadow: 0 0 20px rgb(67, 188, 228), 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.clockFace {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.hourMark {
+  position: absolute;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  transform-origin: top;
 }

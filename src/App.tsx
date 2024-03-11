@@ -11,9 +11,11 @@ const App = () => {
     <>
       <img className={styles.bg} src={bgImage} />
       <div className={styles.app}>
-        <Calendar />
-        <Clock />
-        <Timer />
+        <div className={styles.container}>
+          <Calendar />
+          <Clock />
+          <Timer />
+        </div>
       </div>
     </>
   );

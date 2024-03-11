@@ -11,20 +11,10 @@ const CircleBase = ({ children, outerSize, faceSize }: Props) => {
   const faceOffset = (outerSize - faceSize) / 2;
   return (
     <div
-      className={styles.outerShape}
+      className={styles.glassCircle}
       style={{ width: outerSize, height: outerSize }}
     >
-      <div
-        className={styles.face}
-        style={{
-          width: faceSize,
-          height: faceSize,
-          top: faceOffset,
-          left: faceOffset
-        }}
-      >
-        {children}
-      </div>
+      {children}
     </div>
   );
 };
