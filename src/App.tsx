@@ -1,7 +1,7 @@
 import * as React from "react";
 import { hot } from "react-hot-loader/root";
 import styles from "./App.module.scss";
-import bgImage from "./Image/launch-bg.jpg";
+import bgImage from "./Image/earth-bg.png";
 import Calendar from "./Widget/Calendar";
 import Clock from "./Widget/Clock";
 import Timer from "./Widget/Timer";

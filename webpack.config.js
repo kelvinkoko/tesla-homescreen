@@ -44,23 +44,12 @@ const config = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.jpg$/,
+        test: /\.(jpg|png)$/,
         type: "asset/resource"
       },
       {
         test: /\.svg$/,
         use: "file-loader"
-      },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              mimetype: "image/png"
-            }
-          }
-        ]
       }
     ]
   },
