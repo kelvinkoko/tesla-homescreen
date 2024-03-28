@@ -1,0 +1,59 @@
+.settingsPanel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 10px;
+  user-select: none;
+  pointer-events: auto;
+
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 500px;
+  color: #fff;
+
+  background: rgba(148, 148, 148, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(148, 148, 148, 0.3);
+}
+
+.menu {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  gap: 4px;
+
+  width: 120px;
+  border-radius: 16px 0px 0px 16px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.menuItem {
+  color: #ffffffa5;
+  padding: 8px 20px;
+  font-size: 15px;
+}
+
+.menuItem:hover {
+  color: #ffffffc4;
+}
+
+.itemHighlight {
+  color: #ffffffc4;
+  border-radius: 8px;
+  background: #ffffff2b;
+}
+
+.settingContent {
+  padding: 20px;
+}
+
+.settingTitle {
+  font-weight: 500;
+  font-size: 20px;
+}
