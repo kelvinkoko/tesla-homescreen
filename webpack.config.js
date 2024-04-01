@@ -60,10 +60,7 @@ const config = {
     }
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "react-dom": "@hot-loader/react-dom"
-    }
+    extensions: [".tsx", ".ts", ".js"]
   },
   plugins: [
     new HtmlWebpackPlugin({
