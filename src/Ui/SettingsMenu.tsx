@@ -1,18 +1,11 @@
+import { observer } from "mobx-react-lite";
 import * as React from "react";
-import { useState } from "react";
-import TimezoneSelect, {
-  ITimezoneOption,
-  type ITimezone
-} from "react-timezone-select";
+import TimezoneSelect from "react-timezone-select";
+import settingsStore from "../Store/SettingsStore";
 import styles from "./SettingsMenu.module.scss";
 
-const SettingsMenu = () => {
+const SettingsMenu = observer(() => {
   const [selectedItem, setSelectedItem] = React.useState(MENU.TIME);
-  const [selectedTimezone, setSelectedTimezone] = useState<ITimezone>(
-    Intl.DateTimeFormat().resolvedOptions().timeZone
-  );
-  console.log((selectedTimezone as ITimezoneOption).offset);
-
   return (
     <div className={styles.settingsPanel}>
       <div className={styles.menu}>
@@ -34,8 +27,10 @@ const SettingsMenu = () => {
       <div className={styles.settingContent}>
         <div className={styles.settingTitle}>Time Zone</div>
         <TimezoneSelect
-          value={selectedTimezone}
-          onChange={setSelectedTimezone}
+          value={settingsStore.timezone}
+          onChange={timezone => {
+            settingsStore.updateTimezone(timezone);
+          }}
           styles={{
             option: (baseStyles, state) => ({
               ...baseStyles,
@@ -50,7 +45,7 @@ const SettingsMenu = () => {
       </div>
     </div>
   );
-};
+});
 
 enum MENU {
   TIME = "Time",

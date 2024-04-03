@@ -1,17 +1,24 @@
 import * as _ from "lodash";
+import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import settingsStore from "../Store/SettingsStore";
 import Dome from "../Ui/Dome";
 import styles from "./Clock.module.scss";
 
-const Clock = () => {
+const Clock = observer(() => {
   const [time, setTime] = useState<string>("");
   const [hourAngle, setHourAngle] = useState<number>(0);
   const [minuteAngle, setMinuteAngle] = useState<number>(0);
 
   useEffect(() => {
     const updateTime = () => {
-      const date = new Date();
+      const currentUTC =
+        new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+      const date = new Date(
+        currentUTC + settingsStore.gmtOffset * 60 * 60 * 1000
+      );
+
       const hours = date.getHours().toString().padStart(2, "0");
       const minutes = date.getMinutes().toString().padStart(2, "0");
       const seconds = date.getSeconds();
@@ -69,6 +76,6 @@ const Clock = () => {
       </div>
     </Dome>
   );
-};
+});
 
 export default Clock;
