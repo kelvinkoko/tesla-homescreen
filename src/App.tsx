@@ -26,7 +26,16 @@ const App = () => {
         }}
         className={styles.settingIcon}
       />
-      {shouldShowMenu ? <SettingsMenu /> : null}
+      {shouldShowMenu ? (
+        <div
+          className={styles.settingOverlay}
+          onClick={() => {
+            setShouldShowMenu(false);
+          }}
+        >
+          <SettingsMenu />
+        </div>
+      ) : null}
     </>
   );
 };

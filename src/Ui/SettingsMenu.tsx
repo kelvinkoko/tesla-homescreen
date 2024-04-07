@@ -38,7 +38,7 @@ const SettingsMenu = observer(() => {
             }),
             container: (baseStyles, state) => ({
               ...baseStyles,
-              width: "250px"
+              width: "100%"
             })
           }}
         />
