@@ -7,7 +7,7 @@ import styles from "./SettingsMenu.module.scss";
 const SettingsMenu = observer(() => {
   const [selectedItem, setSelectedItem] = React.useState(MENU.TIME);
   return (
-    <div className={styles.settingsPanel}>
+    <div className={styles.settingsPanel} onClick={handleClick}>
       <div className={styles.menu}>
         {Object.values(MENU).map(item => {
           return (
@@ -46,6 +46,11 @@ const SettingsMenu = observer(() => {
     </div>
   );
 });
+
+const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  // Stop propagation to settings menu overlay for dismiss the menu
+  event.stopPropagation();
+};
 
 enum MENU {
   TIME = "Time",
