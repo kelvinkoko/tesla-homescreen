@@ -19,8 +19,8 @@ const App = observer(() => {
       <img className={styles.bg} src={bgImage} />
       <div className={styles.app}>
         <div className={styles.container}>
-          <Calendar initialTime={settingsStore.timezoneOffsetTime} />
-          <Clock initialTime={settingsStore.timezoneOffsetTime} />
+          <Calendar gmtOffset={settingsStore.gmtOffset} />
+          <Clock gmtOffset={settingsStore.gmtOffset} />
           <Timer />
         </div>
       </div>

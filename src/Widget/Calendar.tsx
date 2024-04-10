@@ -1,20 +1,21 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { timezoneOffsetTime } from "../Store/SettingsStore";
 import SmallCircle from "../Ui/SmallCircle";
 import styles from "./Calendar.module.scss";
 
 interface Props {
-  initialTime: Date;
+  gmtOffset: number;
 }
 
-const Calendar = ({ initialTime }: Props) => {
+const Calendar = ({ gmtOffset }: Props) => {
   const [month, setMonth] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [weekday, setWeekday] = useState<string>("");
 
   useEffect(() => {
     const updateDate = () => {
-      const currentDate = initialTime;
+      const currentDate = timezoneOffsetTime(gmtOffset);
       setMonth(currentDate.toLocaleString("default", { month: "long" }));
       setDate(currentDate.getDate().toString());
       setWeekday(
@@ -38,7 +39,7 @@ const Calendar = ({ initialTime }: Props) => {
       document.removeEventListener("visibilitychange", onVisibilityChange);
       clearInterval(intervalId);
     };
-  }, [initialTime]);
+  }, [gmtOffset]);
 
   return (
     <SmallCircle>

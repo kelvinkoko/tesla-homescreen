@@ -11,12 +11,6 @@ class SettingsStore {
     makeAutoObservable(this);
   }
 
-  get timezoneOffsetTime(): Date {
-    const currentUTC =
-      new Date().getTime() + new Date().getTimezoneOffset() * 60000;
-    return new Date(currentUTC + this.gmtOffset * 60 * 60 * 1000);
-  }
-
   updateTimezone(newTimezone: ITimezone) {
     this.timezone = newTimezone;
     this.gmtOffset = (newTimezone as ITimezoneOption).offset ?? 0;
@@ -24,6 +18,12 @@ class SettingsStore {
     localStorage.setItem("gmtOffset", this.gmtOffset.toString());
   }
 }
+
+export const timezoneOffsetTime = (gmtOffset: number): Date => {
+  const currentUTC =
+    new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+  return new Date(currentUTC + gmtOffset * 60 * 60 * 1000);
+};
 
 // Serialize data to string before storing in localStorage
 const serializeData = (data: ITimezone): string => {
