@@ -1,22 +1,20 @@
-import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import SettingsStore from "../Store/SettingsStore";
 import SmallCircle from "../Ui/SmallCircle";
 import styles from "./Calendar.module.scss";
 
 interface Props {
-  settingsStore: SettingsStore;
+  initialTime: Date;
 }
 
-const Calendar = observer(({ settingsStore }: Props) => {
+const Calendar = ({ initialTime }: Props) => {
   const [month, setMonth] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [weekday, setWeekday] = useState<string>("");
 
   useEffect(() => {
     const updateDate = () => {
-      const currentDate = settingsStore.timezoneOffsetTime;
+      const currentDate = initialTime;
       setMonth(currentDate.toLocaleString("default", { month: "long" }));
       setDate(currentDate.getDate().toString());
       setWeekday(
@@ -40,7 +38,7 @@ const Calendar = observer(({ settingsStore }: Props) => {
       document.removeEventListener("visibilitychange", onVisibilityChange);
       clearInterval(intervalId);
     };
-  }, [settingsStore.timezoneOffsetTime]);
+  }, [initialTime]);
 
   return (
     <SmallCircle>
@@ -51,6 +49,6 @@ const Calendar = observer(({ settingsStore }: Props) => {
       </div>
     </SmallCircle>
   );
-});
+};
 
 export default Calendar;

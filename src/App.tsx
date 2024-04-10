@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { hot } from "react-hot-loader/root";
 import styles from "./App.module.scss";
@@ -11,15 +12,15 @@ import Timer from "./Widget/Timer";
 
 const settingsStore = new SettingsStore();
 
-const App = () => {
+const App = observer(() => {
   const [shouldShowMenu, setShouldShowMenu] = React.useState(false);
   return (
     <>
       <img className={styles.bg} src={bgImage} />
       <div className={styles.app}>
         <div className={styles.container}>
-          <Calendar settingsStore={settingsStore} />
-          <Clock settingsStore={settingsStore} />
+          <Calendar initialTime={settingsStore.timezoneOffsetTime} />
+          <Clock initialTime={settingsStore.timezoneOffsetTime} />
           <Timer />
         </div>
       </div>
@@ -41,6 +42,6 @@ const App = () => {
       ) : null}
     </>
   );
-};
+});
 
 export default hot(App);

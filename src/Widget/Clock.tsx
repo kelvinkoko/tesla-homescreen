@@ -2,22 +2,21 @@ import * as _ from "lodash";
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import SettingsStore from "../Store/SettingsStore";
 import Dome from "../Ui/Dome";
 import styles from "./Clock.module.scss";
 
 interface Props {
-  settingsStore: SettingsStore;
+  initialTime: Date;
 }
 
-const Clock = observer(({ settingsStore }: Props) => {
+const Clock = ({ initialTime }: Props) => {
   const [time, setTime] = useState<string>("");
   const [hourAngle, setHourAngle] = useState<number>(0);
   const [minuteAngle, setMinuteAngle] = useState<number>(0);
 
   useEffect(() => {
     const updateTime = () => {
-      const date = settingsStore.timezoneOffsetTime;
+      const date = initialTime;
       const hours = date.getHours().toString().padStart(2, "0");
       const minutes = date.getMinutes().toString().padStart(2, "0");
       const seconds = date.getSeconds();
@@ -37,7 +36,7 @@ const Clock = observer(({ settingsStore }: Props) => {
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
-  }, [settingsStore.timezoneOffsetTime]);
+  }, [initialTime]);
   const radius = 100;
   return (
     <Dome>
@@ -75,6 +74,6 @@ const Clock = observer(({ settingsStore }: Props) => {
       </div>
     </Dome>
   );
-});
+};
 
 export default Clock;
