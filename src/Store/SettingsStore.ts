@@ -11,7 +11,7 @@ class SettingsStore {
     makeAutoObservable(this);
   }
 
-  getTimezoneOffsetTime(): Date {
+  get timezoneOffsetTime(): Date {
     const currentUTC =
       new Date().getTime() + new Date().getTimezoneOffset() * 60000;
     return new Date(currentUTC + this.gmtOffset * 60 * 60 * 1000);
@@ -62,5 +62,4 @@ const getDataFromLocalStorage = (key: string): ITimezone | null => {
   }
 };
 
-const settingsStore = new SettingsStore();
-export default settingsStore;
+export default SettingsStore;

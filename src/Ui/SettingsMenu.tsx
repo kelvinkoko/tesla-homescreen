@@ -1,10 +1,14 @@
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 import TimezoneSelect from "react-timezone-select";
-import settingsStore from "../Store/SettingsStore";
+import SettingsStore from "../Store/SettingsStore";
 import styles from "./SettingsMenu.module.scss";
 
-const SettingsMenu = observer(() => {
+interface Props {
+  settingsStore: SettingsStore;
+}
+
+const SettingsMenu = observer(({ settingsStore }: Props) => {
   const [selectedItem, setSelectedItem] = React.useState(MENU.TIME);
   return (
     <div className={styles.settingsPanel} onClick={handleClick}>

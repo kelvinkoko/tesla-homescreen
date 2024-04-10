@@ -3,10 +3,13 @@ import { hot } from "react-hot-loader/root";
 import styles from "./App.module.scss";
 import bgImage from "./Image/earth-bg.png";
 import Setting from "./Image/setting.svg";
+import SettingsStore from "./Store/SettingsStore";
 import SettingsMenu from "./Ui/SettingsMenu";
 import Calendar from "./Widget/Calendar";
 import Clock from "./Widget/Clock";
 import Timer from "./Widget/Timer";
+
+const settingsStore = new SettingsStore();
 
 const App = () => {
   const [shouldShowMenu, setShouldShowMenu] = React.useState(false);
@@ -15,8 +18,8 @@ const App = () => {
       <img className={styles.bg} src={bgImage} />
       <div className={styles.app}>
         <div className={styles.container}>
-          <Calendar />
-          <Clock />
+          <Calendar settingsStore={settingsStore} />
+          <Clock settingsStore={settingsStore} />
           <Timer />
         </div>
       </div>
@@ -33,7 +36,7 @@ const App = () => {
             setShouldShowMenu(false);
           }}
         >
-          <SettingsMenu />
+          <SettingsMenu settingsStore={settingsStore} />
         </div>
       ) : null}
     </>
