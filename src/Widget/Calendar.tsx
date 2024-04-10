@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import settingsStore from "../Store/SettingsStore";
 import SmallCircle from "../Ui/SmallCircle";
 import styles from "./Calendar.module.scss";
 
@@ -10,7 +11,7 @@ const Calendar = () => {
 
   useEffect(() => {
     const updateDate = () => {
-      const currentDate = new Date();
+      const currentDate = settingsStore.getTimezoneOffsetTime();
       setMonth(currentDate.toLocaleString("default", { month: "long" }));
       setDate(currentDate.getDate().toString());
       setWeekday(

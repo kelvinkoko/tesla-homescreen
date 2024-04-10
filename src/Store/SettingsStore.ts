@@ -11,6 +11,12 @@ class SettingsStore {
     makeAutoObservable(this);
   }
 
+  getTimezoneOffsetTime(): Date {
+    const currentUTC =
+      new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+    return new Date(currentUTC + this.gmtOffset * 60 * 60 * 1000);
+  }
+
   updateTimezone(newTimezone: ITimezone) {
     this.timezone = newTimezone;
     this.gmtOffset = (newTimezone as ITimezoneOption).offset ?? 0;

@@ -13,12 +13,7 @@ const Clock = observer(() => {
 
   useEffect(() => {
     const updateTime = () => {
-      const currentUTC =
-        new Date().getTime() + new Date().getTimezoneOffset() * 60000;
-      const date = new Date(
-        currentUTC + settingsStore.gmtOffset * 60 * 60 * 1000
-      );
-
+      const date = settingsStore.getTimezoneOffsetTime();
       const hours = date.getHours().toString().padStart(2, "0");
       const minutes = date.getMinutes().toString().padStart(2, "0");
       const seconds = date.getSeconds();
