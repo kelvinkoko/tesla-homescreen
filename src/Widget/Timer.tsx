@@ -75,6 +75,7 @@ const Timer = () => {
         const isLongMark = i % 5 == 0;
         return (
           <div
+            key={i}
             className={isLongMark ? styles.mark5 : styles.mark}
             style={{
               transform: `rotate(${i * 6}deg) translateY(${

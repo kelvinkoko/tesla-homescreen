@@ -1,9 +1,9 @@
 import * as _ from "lodash";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { timezoneOffsetTime } from "../Store/SettingsStore";
 import Dome from "../Ui/Dome";
 import styles from "./Clock.module.scss";
-import { timezoneOffsetTime } from "../Store/SettingsStore";
 
 interface Props {
   gmtOffset: number;
@@ -49,6 +49,7 @@ const Clock = ({ gmtOffset }: Props) => {
             const y = (radius - 9) * Math.cos(radian) + radius;
             return (
               <div
+                key={i}
                 className={styles.hourMark}
                 style={{
                   transform: `translateX(${x - 9}px) translateY(${y - 9}px)`
